@@ -1,5 +1,5 @@
-Event.destroy_all
-User.destroy_all
+# Event.destroy_all
+# User.destroy_all
 
 
 events = RestClient.get 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=r7qtrGxNYlU9gXJwaNwTHLuk6NJQa1RR&size=200'
@@ -7,7 +7,9 @@ parsedEvents = JSON.parse(events)
 resultingEvents = parsedEvents["_embedded"]["events"]
 aibek = User.create(username: "user3", password: "pw3")
 resultingEvents.each do |event|
-    Event.create(category: event["classifications"][0]["genre"]["name"], location: event["_embedded"]["venues"][0]["state"]["name"],
+    Event.create(category: event["classifications"][0]["genre"]["name"], 
+    location: event["_embedded"]["venues"][0]["state"]["name"],
+    description: event["_embedded"]["venues"][0]["address"]["line1"],
     end_time: event["dates"]["start"]["dateTime"], 
     start_time: event["dates"]["start"]["localTime"],
     date: event["dates"]["start"]["localDate"],
@@ -18,13 +20,6 @@ end
 
 
 # puts "It's been seeded"
-
-
-
-
-
-
-
 
 
 User.create(username: "user1", password: "pw1")

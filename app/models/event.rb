@@ -7,6 +7,6 @@ class Event < ApplicationRecord
   has_many :user_events
   has_many :attending_users, through: :user_events, source: :user
 
-  has_many :favorite_events
+  has_many :favorite_events , dependent: :destroy
     has_many :favorited_by_users, through: :favorite_events, source: :user
 end
