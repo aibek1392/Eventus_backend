@@ -5,7 +5,6 @@ class EventsController < ApplicationController
     end
 
     def create
-        
         @event = Event.create(event_params)
 
         if @event.valid?
@@ -18,6 +17,7 @@ class EventsController < ApplicationController
     private 
 
     def event_params
+
        params.permit(:name, :description, :date, :start_time, :user_id, :location, :image, :category) 
     end
 end
