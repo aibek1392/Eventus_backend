@@ -8,6 +8,8 @@ resultingEvents = parsedEvents["_embedded"]["events"]
 aibek = User.create(username: "user3", password: "pw3")
 resultingEvents.each do |event|
     Event.create(category: event["classifications"][0]["genre"]["name"], 
+    longitude: event["_embedded"]["venues"][0]["location"]["longitude"].to_f,
+    latitude: event["_embedded"]["venues"][0]["location"]["latitude"].to_f,
     location: event["_embedded"]["venues"][0]["state"]["name"],
     description: event["_embedded"]["venues"][0]["address"]["line1"],
     end_time: event["dates"]["start"]["dateTime"], 
