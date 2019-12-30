@@ -8,7 +8,7 @@ class FavoriteEventsController < ApplicationController
 
         def create
             @favorite_event = FavoriteEvent.create(favorite_event_params)
-    
+            # @favorite_event = @favorite_event.unique
             if @favorite_event.valid?
                 render json: @favorite_event
             else

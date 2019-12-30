@@ -1,8 +1,14 @@
 class EventsController < ApplicationController
+    
     def index
         @events = Event.all
         render json: @events, include: "**"
     end
+
+    def show
+		@event = Event.find(params[:id])
+		render json: @event, include: "**"
+	end
 
     def create
         @event = Event.create(event_params)
@@ -17,7 +23,6 @@ class EventsController < ApplicationController
     private 
 
     def event_params
-
-       params.permit(:name, :description, :date, :start_time, :user_id, :location, :image, :category) 
+       params.permit(:name,  :description, :date, :start_time, :user_id, :location, :image, :category) 
     end
 end

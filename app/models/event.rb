@@ -1,6 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :user
-
+  validates  :name, :presence => true, :uniqueness => true
   has_many :event_comments
   has_many :users_commented, through: :event_comments, source: :user
 
