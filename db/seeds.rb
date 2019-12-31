@@ -11,6 +11,7 @@ resultingEvents.each do |event|
     longitude: event["_embedded"]["venues"][0]["location"]["longitude"].to_f,
     latitude: event["_embedded"]["venues"][0]["location"]["latitude"].to_f,
     location: event["_embedded"]["venues"][0]["state"]["name"],
+    city: event["_embedded"]["venues"][0]["city"]["name"],
     description: event["_embedded"]["venues"][0]["address"]["line1"],
     end_time: event["dates"]["start"]["dateTime"], 
     start_time: event["dates"]["start"]["localTime"],
