@@ -15,7 +15,16 @@ class UsersController < ApplicationController
             # end
             render json: user, include: :favorite_events
       end
-    
+
+      def profile
+        if current_user
+            render json: current_user
+        else
+            render json: {error: 'There is no user found'}
+        end
+      end
+      
+
       def create
         user = User.create(user_params)
         if user.valid?
@@ -28,7 +37,7 @@ class UsersController < ApplicationController
       private
     
       def user_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :image, :location)
       end
     
     end
