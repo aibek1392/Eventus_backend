@@ -14,7 +14,7 @@ class EventsController < ApplicationController
         @event = Event.create(event_params)
 
         if @event.valid?
-            render json: @event
+            ActionCable.server.broadcast('events_channel', EventSerializer.new(event))
         else
             render json: {errors: @event.errors.full_messages}, status: 401
         end

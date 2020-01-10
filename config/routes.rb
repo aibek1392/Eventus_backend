@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create]
   resources :login, only: [:create]
 
-  # 
+  mount ActionCable.server => '/cable'
 
   # post '/login', to: 'login#login'
   # get '/profile', to: 'users#profile'

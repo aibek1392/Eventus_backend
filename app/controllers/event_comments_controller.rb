@@ -10,7 +10,7 @@ class EventCommentsController < ApplicationController
         @event_comments = EventComment.create(event_comments_params)
         # @event_comments = @event_comments.unique
         if @event_comments.valid?
-            render json: @event_comments
+            ActionCable.server.broadcast('event_comments_channel', EventCommentSerializer.new(@event_comments))
         else
             render json: {errors: @event_comments.errors.full_messages}, status: 401
         end

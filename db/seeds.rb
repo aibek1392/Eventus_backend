@@ -5,7 +5,7 @@
 events = RestClient.get 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=r7qtrGxNYlU9gXJwaNwTHLuk6NJQa1RR&size=200'
 parsedEvents = JSON.parse(events)
 resultingEvents = parsedEvents["_embedded"]["events"]
-aibek = User.create(username: "user3", password: "pw3")
+aibek = User.create(username: "user3", password: "pw3", image: "https://www.pngkey.com/png/detail/115-1150152_default-profile-picture-avatar-png-green.png",)
 resultingEvents.each do |event|
     Event.create(category: event["classifications"][0]["genre"]["name"], 
     longitude: event["_embedded"]["venues"][0]["location"]["longitude"].to_f,
@@ -26,5 +26,5 @@ end
 # puts "It's been seeded"
 
 
-User.create(username: "user1", password: "pw1")
-User.create(username: "user2", password: "pw2")
+User.create(username: "user1", image: "https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png", password: "pw1")
+User.create(username: "user2", image: "https://cdn3.iconfinder.com/data/icons/vector-icons-6/96/256-512.png", password: "pw2")
