@@ -16,6 +16,18 @@ class UsersController < ApplicationController
             render json: user, include: :favorite_events
       end
 
+      def update
+        user = User.find(params[:id])
+        user.update(user_params)
+           if user.valid?
+            render json: user
+        else
+            render json: {
+                errors: user.errors.full_messages
+            }
+        end
+      end
+
       def profile
         if current_user
             render json: current_user

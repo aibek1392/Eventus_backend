@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :user_events
   resources :event_comments
   resources :events
-  resources :users, only: [:index, :show, :create]
+  resources :users, only: [:index, :show, :create, :update]
   resources :login, only: [:create]
 
   mount ActionCable.server => '/cable'
