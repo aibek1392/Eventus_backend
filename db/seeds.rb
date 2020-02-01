@@ -2,7 +2,7 @@
 # User.destroy_all
 
 
-events = RestClient.get 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=r7qtrGxNYlU9gXJwaNwTHLuk6NJQa1RR&size=200'
+events = RestClient.get 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=r7qtrGxNYlU9gXJwaNwTHLuk6NJQa1RR&size=150'
 parsedEvents = JSON.parse(events)
 resultingEvents = parsedEvents["_embedded"]["events"]
 aibek = User.create(username: "user3", password: "pw3", image: "https://www.pngkey.com/png/detail/115-1150152_default-profile-picture-avatar-png-green.png",)
@@ -19,6 +19,7 @@ resultingEvents.each do |event|
     date: event["dates"]["start"]["localDate"],
      name: event["name"],
      image: event["images"][6]["url"], 
+     url: event["url"],
      user: aibek )
 end
 
