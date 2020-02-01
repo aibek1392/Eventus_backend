@@ -67,7 +67,7 @@ TicketMaster API keys you can get -> [here] (`https://developer.ticketmaster.com
 
 
 ## Installing
-Backend Installation, please click [here](https://github.com/Gulnoz/EventsOnMapBackend)
+
 
 Frontend Installation:
 
